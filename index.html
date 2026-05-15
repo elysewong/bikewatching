@@ -4,8 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bikewatching</title>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="map.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>🚴🏼‍♀️ Bikewatching</h1>
+    <header class="page-header">
+      <h1>🚴🏼‍♀️ Bikewatching</h1>
+      <label class="time-filter" for="time-slider">
+        <div class="time-filter-row">
+          <span class="time-filter-prompt">Filter by time:</span>
+          <input
+            id="time-slider"
+            type="range"
+            min="-1"
+            max="1439"
+            value="-1"
+            step="1"
+          />
+        </div>
+        <div class="time-filter-display">
+          <em id="any-time" class="time-filter-any">(any time)</em>
+          <time id="selected-time"></time>
+        </div>
+      </label>
+    </header>
+    <div id="map">
+      <svg></svg>
+    </div>
+
+    <div class="legend" role="group" aria-label="Station traffic direction">
+      <span class="legend-heading">Legend:</span>
+      <div style="--departure-ratio: 1">More departures</div>
+      <div style="--departure-ratio: 0.5">Balanced</div>
+      <div style="--departure-ratio: 0">More arrivals</div>
+    </div>
+
+    <script src="map.js" type="module"></script>
   </body>
 </html>
